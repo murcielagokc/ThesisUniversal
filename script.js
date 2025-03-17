@@ -69,5 +69,97 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.querySelectorAll(".modal").forEach(modal => {
+    modal.style.display = "none";
+});
+new Swiper('.card-wraper-Servicios', {
+    
+    loop: true,
+    spaceBetween: 30,
+    centeredSlides: true,
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      dynamicBullets: true
+    },
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        0: { 
+            slidesPerView: 1
+        },
+        768: { 
+            slidesPerView: 2
+        },
+        1024: { 
+            slidesPerView: 3
+        },
+    }
+  });
 
 
+  document.body.addEventListener("click", function (e) {
+    let trigger = e.target.closest("[data-toggle='modal']"); 
+    if (!trigger) return;
+
+    const modalId = trigger.getAttribute("data-target"); 
+    const modal = document.querySelector(modalId); 
+
+    if (modal) {
+        modal.style.display = "flex";
+    }
+});
+
+// Cerrar el modal con botones
+document.querySelectorAll(".close-button").forEach(button => {
+    button.addEventListener("click", function () {
+        const modal = this.closest(".modal");
+        if (modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = ""; // Restaurar scroll
+        }
+    });
+});
+
+// Cerrar el modal con el botón 'Cerrar'
+document.querySelectorAll(".modal-close-btn").forEach(button => {
+    button.addEventListener("click", function () {
+        const modal = this.closest(".modal");
+        if (modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = ""; // Restaurar scroll
+        }
+    });
+});
+
+// Cerrar modal al hacer clic fuera del contenido
+window.addEventListener("click", function (event) {
+    if (event.target.classList.contains("modal")) {
+        event.target.style.display = "none";
+        document.body.style.overflow = ""; // Restaurar scroll
+    }
+});
+
+// Manejo del scroll suave para los enlaces de navegación
+const menuLinks = document.querySelectorAll(".nav-link"); 
+menuLinks.forEach(link => {
+    link.addEventListener("click", function (e) {
+        const targetId = this.getAttribute("href");
+        // Solo prevenir comportamiento si es un enlace interno
+        if (targetId && targetId.startsWith("#")) {
+            e.preventDefault();
+            const targetElement = document.getElementById(targetId.substring(1));
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 50,
+                    behavior: "smooth"
+                });
+            }
+        }
+    });
+});
