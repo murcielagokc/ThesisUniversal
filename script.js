@@ -102,6 +102,35 @@ new Swiper('.card-wraper-Servicios', {
     }
   });
 
+  new Swiper('.card-wraper-Universidades', {
+    
+    loop: true,
+    spaceBetween: 30,
+    centeredSlides: true,
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      dynamicBullets: true
+    },
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        0: { 
+            slidesPerView: 1
+        },
+        768: { 
+            slidesPerView: 2
+        },
+        1024: { 
+            slidesPerView: 3
+        },
+    }
+  });
 
   document.body.addEventListener("click", function (e) {
     let trigger = e.target.closest("[data-toggle='modal']"); 
@@ -162,4 +191,113 @@ menuLinks.forEach(link => {
             }
         }
     });
+});
+
+const universidades = {
+    "pontificia universidad católica del perú": "Cato",
+    "universidad científica del sur": "Ucsur",
+    "universidad esan": "Esan",
+    "universidad señor de sipán": "Uss",
+    "universidad de lima": "Ulima",
+    "universidad peruana de ciencias aplicadas": "UPC",
+    "universidad privada del norte": "Upn",
+    "universidad césar vallejo": "Ucv",
+    "universidad de ingeniería y tecnología": "Utec",
+    "universidad tecnológica del perú": "Utp",
+    "universidad de piura": "Upiura",
+    "universidad de san martín de porres": "Usmp",
+    "universidad nacional tecnológica de lima sur": "Untels"
+};
+
+function normalizarTexto(texto) {
+    return texto
+        .toLowerCase()
+        .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Elimina tildes
+        .replace(/\buniversidad\b/g, "") // Elimina la palabra "universidad"
+        .trim();
+}
+
+// Función para mostrar sugerencias mientras el usuario escribe
+function mostrarSugerencias() {
+    let input = document.getElementById("buscadorUniversidad").value.toLowerCase();
+    let sugerenciasDiv = document.getElementById("sugerencias");
+
+    // Limpiar sugerencias anteriores
+    sugerenciasDiv.innerHTML = "";
+    
+    // Si el input está vacío, ocultar sugerencias
+    if (input.length < 2) {
+        sugerenciasDiv.style.display = "none";
+        return;
+    }
+    
+    // Normalizar input para búsqueda
+    let inputNormalizado = normalizarTexto(input);
+    
+    // Buscar coincidencias
+    let coincidencias = [];
+    
+    for (let uni in universidades) {
+        let uniNormalizada = normalizarTexto(uni);
+        
+        if (uniNormalizada.includes(inputNormalizado)) {
+            coincidencias.push({
+                nombre: uni,
+                codigo: universidades[uni]
+            });
+        }
+    }
+    
+    // Mostrar coincidencias o mensaje si no hay resultados
+    if (coincidencias.length > 0) {
+        coincidencias.forEach(uni => {
+            let item = document.createElement("div");
+            item.className = "list-group-item";
+            item.textContent = uni.nombre.charAt(0).toUpperCase() + uni.nombre.slice(1);
+            
+            // Al hacer clic en una sugerencia
+            item.addEventListener("click", function() {
+                document.getElementById("buscadorUniversidad").value = uni.nombre;
+                sugerenciasDiv.style.display = "none";
+                
+                // Opcional: Abrir el modal correspondiente
+                // Si tienes modales definidos como en tu HTML original:
+                const modal = document.getElementById(uni.codigo);
+                if (modal) {
+                    // Aquí irían las funciones para abrir el modal
+                    // Por ejemplo, si usas una biblioteca de modales personalizada
+                    console.log(`Seleccionada universidad: ${uni.nombre} (${uni.codigo})`);
+                }
+            });
+            
+            sugerenciasDiv.appendChild(item);
+        });
+    } else {
+        let noResultados = document.createElement("div");
+        noResultados.className = "list-group-item text-muted";
+        noResultados.textContent = "No se encontraron resultados";
+        sugerenciasDiv.appendChild(noResultados);
+    }
+    
+    // Mostrar el div de sugerencias
+    sugerenciasDiv.style.display = "block";
+}
+
+// Cerrar sugerencias al hacer clic fuera del buscador
+document.addEventListener("click", function(event) {
+    const buscador = document.getElementById("buscadorUniversidad");
+    const sugerencias = document.getElementById("sugerencias");
+    
+    if (event.target !== buscador && event.target.closest("#sugerencias") === null) {
+        sugerencias.style.display = "none";
+    }
+});
+
+// Para pruebas: Mostrar todas las universidades al enfocar el campo vacío
+document.getElementById("buscadorUniversidad").addEventListener("focus", function() {
+    if (this.value.length === 0) {
+        this.value = " "; // Espacio para activar la búsqueda
+        mostrarSugerencias();
+        this.value = ""; // Eliminar el espacio
+    }
 });

@@ -16,8 +16,7 @@
     <header>
         <nav class="navbar section-content">
             <a href="#" class="navLogo" style="display: flex; align-items: center;">
-                <img src="./img/LogoNavbar.png" alt="Logo" class="LogoNavbar">
-                <h2 class="logo-text">ThesisUniversal</h2>
+                <img src="./img/logo.jpg" alt="Logo" class="LogoNavbar">
             </a>
             <ul class="nav-menu">
                 <button class="fas fa-times" id="menu-close-button"></button>
@@ -31,7 +30,7 @@
                     <a href="#Servicios" class="nav-link">Servicios</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Universidades</a>
+                    <a href="#Universidades" class="nav-link">Universidades</a>
                     <ul class="submenu">
                         <li>
                             <a href="#" class="nav-Sublink">Públicas</a>
@@ -60,7 +59,7 @@
                     <p class="description">Servicios profesionales de asesoría de tesis para ayudarle a alcanzar sus
                         metas académicas con confianza y claridad.</p>
                     <div class="buttons">
-                        <a href="#" class="button contactanos">Contactanos</a>
+                        <a href="#" class="button contactanos">Contáctanos</a>
                         <a href="#" class="button referencias">Referencias</a>
                     </div>
                 </div>
@@ -69,7 +68,7 @@
                         <img src="./img/fondo.jpg" alt="Imagen de graduación">
                         <div class="floating-card">
                             <h3>Consulta hoy</h3>
-                            <p>Comunicate con un asesor de tesis</p>
+                            <p>Comunícate con un asesor de tesis</p>
                             <a href="#contacto">Consultas gratis</a>
                         </div>
                     </div>
@@ -81,7 +80,7 @@
                 <div class="about-details">
                     <h2 class="section-title">Sobre Nosotros</h2>
                     <p class="text">En nuestro equipo contamos con personal calificado para que te puedan apoyar en el
-                        desarrollo de tu tesis o trabajos academicos. Con experiencia en diversas disciplinas, ofrecemos
+                        desarrollo de tu tesis o trabajos académicos. Con experiencia en diversas disciplinas, ofrecemos
                         orientación personalizada para ayudarte a destacar en tu trayectoria académica. </p>
                     <p class="section-subtitle">Trabajamos con universidades de Lima y provincias.</p>
                     <div class="social-link-list">
@@ -411,7 +410,128 @@
                 </div>
             </div>
         </section>
-        
+        <section class="Universidades-section" id="Universidades">
+            <h2 class="section-title">Universidades con las que Trabajamos</h2>
+            <h3 class="section-subtitle">La mayoría de nuestros estudiantes son de las siguientes universidades</h3>
+            <div class="section-content"></div>
+            <div class="search-container">
+                <input type="text" id="buscadorUniversidad" placeholder="Buscar universidad..." oninput="mostrarSugerencias()">
+                <div id="sugerencias" class="list-group"></div>
+            </div>
+            <h2 class="section-title">Universidades Privadas</h2>
+            <div>
+                <div class="container-Servicios swiper">
+                    <div class="card-wraper-Universidades">
+                        <ul class="card-list-Universidades swiper-wrapper">
+                            <li class="card-item-Universidades swiper-slide">
+                                <div class="card-link-Universidades hover-cato" data-toggle="modal" data-target="#Cato">
+                                    <img src="./img/Logo-Universidades/logoPuc.jpg" alt="card-image"
+                                        class="card-image">
+                                    <h2 class="card-title">Pontificia Universidad Católica del Perúr</h2>           
+                                </div>
+                            </li>
+                            <li class="card-item-Universidades swiper-slide">
+                                <div class="card-link-Universidades over-Ucsur" data-toggle="modal" data-target="#Ucsur">
+                                    <img src="./img/Logo-Universidades/UCSURlogo.jpg" alt="card-image"
+                                        class="card-image">
+                                    <h2 class="card-title">Universidad Científica del Sur</h2>           
+                                </div>
+                            </li> 
+                            <li class="card-item-Universidades swiper-slide">
+                                <div class="card-link-Universidades hover-Esan" data-toggle="modal" data-target="#Esan">
+                                    <img src="./img/Logo-Universidades/EsanLogo.png" alt="card-image"
+                                        class="card-image">
+                                    <h2 class="card-title">Universidad ESAN</h2>           
+                                </div>
+                            </li> 
+                            <li class="card-item-Universidades swiper-slide">
+                                <div class="card-link-Universidades hover-Uss" data-toggle="modal" data-target="#Uss">
+                                    <img src="./img/Logo-Universidades/SñorSipan.png" alt="card-image"
+                                        class="card-image">
+                                    <h2 class="card-title">UUniversidad Señor de Sipán</h2>           
+                                </div>
+                            </li> 
+                            <li class="card-item-Universidades swiper-slide">
+                                <div class="card-link-Universidades hover-ulima" data-toggle="modal" data-target="#Ulima">
+                                    <img src="./img/Logo-Universidades/Ulima.png" alt="card-image"
+                                        class="card-image">
+                                    <h2 class="card-title">Universidad de Lima</h2>           
+                                </div>
+                            </li> 
+                            <li class="card-item-Universidades swiper-slide">
+                                <div class="card-link-Universidades hover-upc" data-toggle="modal" data-target="#UPC">
+                                    <img src="./img/Logo-Universidades/UpcLogo.png" alt="card-image"
+                                        class="card-image">
+                                    <h2 class="card-title">Universidad Peruana de Ciencias Aplicadas</h2>           
+                                </div>
+                            </li> 
+                            <li class="card-item-Universidades swiper-slide">
+                                <div class="card-link-Universidades hover-Upiura" data-toggle="modal" data-target="#Upn">
+                                    <img src="./img/Logo-Universidades/upnLogo.png" alt="card-image"
+                                        class="card-image">
+                                    <h2 class="card-title">Universidad Privada del Norte</h2>           
+                                </div>
+                            </li> 
+                            <li class="card-item-Universidades swiper-slide">
+                                <div class="card-link-Universidades hover-Upn" data-toggle="modal" data-target="#Ucv">
+                                    <img src="./img/Logo-Universidades/UcvLogo.png" alt="card-image"
+                                        class="card-image">
+                                    <h2 class="card-title">Universidad César Vallejo</h2>           
+                                </div>
+                            </li> 
+                            <li class="card-item-Universidades swiper-slide">
+                                <div class="card-link-Universidades hover-Usmp" data-toggle="modal" data-target="#Utec">
+                                    <img src="./img/Logo-Universidades/UtecLogo.jpg" alt="card-image"
+                                        class="card-image">
+                                    <h2 class="card-title">Universidad de Ingeniería y Tecnología</h2>           
+                                </div>
+                            </li> 
+                            <li class="card-item-Universidades swiper-slide">
+                                <div class="card-link-Universidades hover-Utec" data-toggle="modal" data-target="#Utp">
+                                    <img src="./img/Logo-Universidades/UTPLogo.jpg" alt="card-image"
+                                        class="card-image">
+                                    <h2 class="card-title">Universidad Tecnológica del Perú</h2>           
+                                </div>
+                            </li> 
+                            <li class="card-item-Universidades swiper-slide">
+                                <div class="card-link-Universidades hover-Utp" data-toggle="modal" data-target="#Upiura">
+                                    <img src="./img/Logo-Universidades/favicon-udep.png" alt="card-image"
+                                        class="card-image">
+                                    <h2 class="card-title">Universidad de Piura</h2>           
+                                </div>
+                            </li> 
+                            <li class="card-item-Universidades swiper-slide">
+                                <div class="card-link-Universidades hover-Ucv" data-toggle="modal" data-target="#Usmp">
+                                    <img src="./img/Logo-Universidades/UsmpLogo.png" alt="card-image"
+                                        class="card-image">
+                                    <h2 class="card-title">Universidad de San Martín de Porres</h2>           
+                                </div>
+                            </li>                                             
+                        </ul>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+                <h2 class="section-title">Universidades Púbilcas</h2>
+                <div class="container-Servicios swiper">
+                    <div class="card-wraper-Universidades">
+                        <ul class="card-list-Universidades swiper-wrapper">
+                            <li class="card-item-Universidades swiper-slide">
+                                <div class="card-link-Universidades hover-Untels" data-toggle="modal" data-target="#Untels">
+                                    <img src="./img/Logo-Universidades/Untelslogo.png" alt="card-image"
+                                        class="card-image">
+                                    <h2 class="card-title">Universidad Nacional Tecnológica de Lima Sur</h2>           
+                                </div>
+                            </li>                                            
+                        </ul>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
