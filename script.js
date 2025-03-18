@@ -131,6 +131,35 @@ new Swiper('.card-wraper-Servicios', {
         },
     }
   });
+  new Swiper('.card-wraper-Referencias', {
+    
+    loop: true,
+    spaceBetween: 30,
+    centeredSlides: true,
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      dynamicBullets: true
+    },
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        0: { 
+            slidesPerView: 2
+        },
+        768: { 
+            slidesPerView: 3
+        },
+        1024: { 
+            slidesPerView: 4
+        },
+    }
+  });
 
   document.body.addEventListener("click", function (e) {
     let trigger = e.target.closest("[data-toggle='modal']"); 
@@ -369,3 +398,4 @@ document.getElementById("contactForm").addEventListener("submit", function(event
     })
     .catch(error => console.error("Error:", error));
 });
+

@@ -836,6 +836,63 @@ header .navbar {
     min-height: 100vh;
 }
 
+/*estilos de referencias*/
+.container-Referencias {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.card-wraper-Referencias {
+    width: 100%;
+    padding: 0 40px;
+    /* Espacio para los botones de navegación */
+    margin-bottom: 50px;
+    margin-top: 10px;
+    overflow: visible;
+}
+
+.card-list-Referencias {
+    display: flex;
+    width: 100%;
+}
+
+.card-list-Referencias .card-item-Referencias {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.card-list-Referencias .card-item-Referencias .card-link-Referencias {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+    background-color: #d9e1f0f1;
+    border-radius: 12px;
+    text-decoration: none;
+    border: 2px solid transparent;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card-list-Referencias .card-item-Referencias .card-link-Referencias:hover {
+    border-color: #000080;
+    transform: translateY(-5px);
+}
+
+.card-list-Referencias .card-link-Referencias .card-image {
+    width: 100%;
+    height: auto;
+    /* Altura fija para todas las imágenes */
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+/* estilos de contacto*/
 .Contacto-section{
     min-height: 100vh;
     padding: 80px 0;
