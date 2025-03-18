@@ -195,6 +195,51 @@ menuLinks.forEach(link => {
 });
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    const menuOpenButton = document.getElementById('menu-open-button');
+    const menuCloseButton = document.getElementById('menu-close-button');
+    const navMenu = document.querySelector('.nav-menu');
+    const universidadesLink = document.querySelector('a[href="#Universidades"]');
+    const submenu = document.querySelector('.submenu');
+    
+    
+    function checkScreenSize() {
+      if (window.innerWidth <= 900) {
+        
+        submenu.style.display = 'none';
+      } else {
+        
+        submenu.style.display = '';
+      }
+    }
+    
+    // Abrir menú hamburguesa
+    menuOpenButton.addEventListener('click', function() {
+      navMenu.classList.add('active');
+      checkScreenSize();
+    });
+    
+   
+    menuCloseButton.addEventListener('click', function() {
+      navMenu.classList.remove('active');
+    });
+    universidadesLink.addEventListener('click', function(e) {
+      if (window.innerWidth <= 900) {
+       
+        e.preventDefault();
+        submenu.style.display = 'none';
+      } else {
+        
+        e.preventDefault();
+        submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+      }
+    }); 
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+  });
+
+
+
 const universidades = {
     "pontificia universidad católica del perú": "Cato",
     "universidad científica del sur": "Ucsur",
