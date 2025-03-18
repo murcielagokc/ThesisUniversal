@@ -175,7 +175,8 @@ window.addEventListener("click", function (event) {
 });
 
 // Manejo del scroll suave para los enlaces de navegación
-const menuLinks = document.querySelectorAll(".nav-link"); 
+const menuLinks = document.querySelectorAll(".nav-link, .nav-Sublink"); 
+
 menuLinks.forEach(link => {
     link.addEventListener("click", function (e) {
         const targetId = this.getAttribute("href");
@@ -192,6 +193,7 @@ menuLinks.forEach(link => {
         }
     });
 });
+
 
 const universidades = {
     "pontificia universidad católica del perú": "Cato",
@@ -213,7 +215,7 @@ function normalizarTexto(texto) {
     return texto
         .toLowerCase()
         .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Elimina tildes
-        .replace(/\buniversidad\b/g, "") // Elimina la palabra "universidad"
+        
         .trim();
 }
 
@@ -254,19 +256,19 @@ function mostrarSugerencias() {
             let item = document.createElement("div");
             item.className = "list-group-item";
             item.textContent = uni.nombre.charAt(0).toUpperCase() + uni.nombre.slice(1);
+            item.setAttribute("data-toggle", "modal");
+            item.setAttribute("data-target", `#${uni.codigo}`);
             
             // Al hacer clic en una sugerencia
             item.addEventListener("click", function() {
                 document.getElementById("buscadorUniversidad").value = uni.nombre;
                 sugerenciasDiv.style.display = "none";
                 
-                // Opcional: Abrir el modal correspondiente
-                // Si tienes modales definidos como en tu HTML original:
+                // Abrir el modal correspondiente
                 const modal = document.getElementById(uni.codigo);
                 if (modal) {
-                    // Aquí irían las funciones para abrir el modal
-                    // Por ejemplo, si usas una biblioteca de modales personalizada
-                    console.log(`Seleccionada universidad: ${uni.nombre} (${uni.codigo})`);
+                    modal.style.display = "flex";
+                    document.body.style.overflow = "hidden"; // Evitar scroll
                 }
             });
             
@@ -300,4 +302,25 @@ document.getElementById("buscadorUniversidad").addEventListener("focus", functio
         mostrarSugerencias();
         this.value = ""; // Eliminar el espacio
     }
+});
+
+document.getElementById("contactForm").addEventListener("submit", function(event){
+    event.preventDefault(); // Evita que la página se recargue
+
+    let form = event.target;
+    let formData = new FormData(form);
+
+    fetch(form.action, { // Usa la acción del formulario (FormSubmit API)
+        method: "POST",
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            document.getElementById("successMessage").style.display = "block"; // Muestra el mensaje de éxito
+            form.reset(); // Limpia el formulario después de enviar
+        } else {
+            alert("Hubo un problema al enviar el mensaje.");
+        }
+    })
+    .catch(error => console.error("Error:", error));
 });

@@ -85,6 +85,7 @@ header {
     z-index: 5;
     background: #f5f9ff;
     position: fixed;
+    border-bottom: 1px solid #e6dddd;
 }
 
 header .navbar {
@@ -587,7 +588,7 @@ header .navbar {
     padding: 8px 25px;
     font-size: 0.9rem;
     cursor: pointer;
-    margin: 0 20px 15px;
+    margin: 10px 20px 15px;
     float: right;
     transition: all 0.2s;
 }
@@ -727,6 +728,21 @@ header .navbar {
     align-items: center;
     text-align: center;
 }
+.curso-list {
+    color: #4b5563;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .curso-list li {
+    padding: 8px 0 1px 24px;
+    position: relative;
+    color: #555;
+    font-size: 16px;
+  }
+  
 
 /*hover de las universidades*/
 .hover-cato:hover {
@@ -792,6 +808,175 @@ header .navbar {
 .hover-Untels:hover {
     background: linear-gradient(to top, #F5A623, #FFFFFF);
     color: #ffffff;
+}
+
+.Referencias-section{
+    min-height: 100vh;
+}
+
+.Contacto-section{
+    min-height: 100vh;
+    padding: 80px 0;
+}
+.contacto-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.contacto-form-container {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    border: 1px solid #b1c8df;
+}
+.contacto-info-container{
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    border: 1px solid #b1c8df;
+}
+.contacto-title {
+    font-size: var(--font-size-l);
+    color: #1a3a5a;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.contacto-subtitle {
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #1a3a5a;
+    font-weight: var(--font-size-m);
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #b1c8df;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #0096d6;
+    outline: none;
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+.btn-enviar {
+    background-color: #0096d6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.btn-enviar:hover {
+    background-color: #0077aa;
+}
+
+.contacto-info {
+    margin-bottom: 40px;
+}
+
+.info-item {
+    margin-bottom: 15px;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #1a3a5a;
+    margin-right: 8px;
+}
+
+.info-value {
+    color: #495057;
+}
+
+.redes-sociales {
+    margin-top: 40px;
+}
+
+.redes-title {
+    font-size: 22px;
+    color: #1a3a5a;
+    margin-bottom: 10px;
+}
+
+.highlight {
+    color: #00c2cb;
+}
+
+.redes-subtitle {
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.redes-separador {
+    width: 60px;
+    height: 3px;
+    background-color: #0096d6;
+    margin-bottom: 30px;
+}
+
+.redes-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    transition: transform 0.3s;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+}
+
+.facebook {
+    background-color: #1d4e73;
+}
+
+.instagram {
+    background-color: #5ba4b1;
+}
+
+.twitter {
+    background-color: #a6d0e4;
+}
+
+.whatsapp {
+    background-color: #1d4e73;
 }
 
 /* Media query para tablets */
@@ -862,6 +1047,7 @@ header .navbar {
         font-size: 14px;
     }
 }
+
 
 
 /* Media query para móviles */
@@ -1015,8 +1201,30 @@ header .navbar {
     .card-list-Servicios .card-item-Servicios .card-link-Servicios {
         width: 300px;
     }
+    .contacto-container {
+        flex-direction: column;
+    }
+    
+    .contacto-form-container,
+    .contacto-info-container {
+        width: 100%;
+    }
 }
-
+@media (max-width: 576px) {
+    .contacto-section {
+        padding: 50px 20px;
+    }
+    
+    .contacto-form-container,
+    .contacto-info-container {
+        padding: 30px 20px;
+    }
+    
+    .redes-icons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
 @media (hover: none) {
     .list-group-item {
         padding: 14px;
