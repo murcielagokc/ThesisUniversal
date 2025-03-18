@@ -150,7 +150,7 @@ new Swiper('.card-wraper-Servicios', {
     },
     breakpoints: {
         0: { 
-            slidesPerView: 2
+            slidesPerView: 1
         },
         768: { 
             slidesPerView: 3
@@ -202,6 +202,50 @@ window.addEventListener("click", function (event) {
         document.body.style.overflow = ""; // Restaurar scroll
     }
 });
+
+document.body.addEventListener("click", function (e) {
+    let trigger = e.target.closest("[data-toggle='modal-img']"); 
+    if (!trigger) return;
+
+    const modalId = trigger.getAttribute("data-target"); 
+    const modal = document.querySelector(modalId); 
+
+    if (modal) {
+        modal.style.display = "flex";
+    }
+});
+
+// Cerrar el modal con botones
+document.querySelectorAll(".close-button").forEach(button => {
+    button.addEventListener("click", function () {
+        const modal = this.closest(".modal-img");
+        if (modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = ""; // Restaurar scroll
+        }
+    });
+});
+
+// Cerrar el modal con el botón 'Cerrar'
+document.querySelectorAll(".modal-close-btn").forEach(button => {
+    button.addEventListener("click", function () {
+        const modal = this.closest(".modal-img");
+        if (modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = ""; // Restaurar scroll
+        }
+    });
+});
+
+// Cerrar modal al hacer clic fuera del contenido
+window.addEventListener("click", function (event) {
+    if (event.target.classList.contains("modal-img")) {
+        event.target.style.display = "none";
+        document.body.style.overflow = ""; // Restaurar scroll
+    }
+});
+
+
 
 // Manejo del scroll suave para los enlaces de navegación
 const menuLinks = document.querySelectorAll(".nav-link, .nav-Sublink, .contactanos, .referencias, .btn-floating, .fut-nav"); 
