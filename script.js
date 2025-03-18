@@ -175,7 +175,7 @@ window.addEventListener("click", function (event) {
 });
 
 // Manejo del scroll suave para los enlaces de navegación
-const menuLinks = document.querySelectorAll(".nav-link, .nav-Sublink"); 
+const menuLinks = document.querySelectorAll(".nav-link, .nav-Sublink, .contactanos, .referencias, .btn-floating, .fut-nav"); 
 
 menuLinks.forEach(link => {
     link.addEventListener("click", function (e) {
