@@ -1209,7 +1209,12 @@ textarea.form-control {
     margin-right: 10px;
     color: #ff0000;
 }
-
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
 /* Botón de WhatsApp */
 
 

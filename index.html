@@ -107,8 +107,8 @@
                                 <p>Años de experiencia</p>
                             </div>
                             <div class="stats-item">
-                                <h2>10+</h2>
-                                <p>De profesionales</p>
+                                <h2>25+</h2>
+                                <p>Carreras</p>
                             </div>
                         </div>
 
@@ -994,11 +994,7 @@
                                     <img src="./img//Referencias/19.png" alt="card-image" class="card-image">
                                 </div>
                             </li>
-                            <li class="card-item-Referencias swiper-slide" data-toggle="modal" data-target="#Img20">
-                                <div class="card-link-Referencias">
-                                    <img src="./img//Referencias/20.png" alt="card-image" class="card-image">
-                                </div>
-                            </li>
+                            
                         </ul>
                         <div class="swiper-pagination"></div>
                         <div class="swiper-button-prev"></div>
@@ -1121,39 +1117,36 @@
                     <img src="./img/Referencias/19.png" alt="">
                 </div>
             </div>
-            <div id="Img20" class="modal-img">
-                <div class="modal-content-img">
-                    <span class="close-button">&times;</span>
-                    <img src="./img/Referencias/20.png" alt="">
-                </div>
-            </div>
+            
         </section>
         <section class="Contacto-section" id="Contacto">
             <div class="contacto-container">
                 <div class="contacto-form-container">
                     <h2 class="contacto-title">Déjanos tus datos</h2>
-                    <form class="contacto-form" id="contactForm"
-                        action="https://formsubmit.co/Thesis.universall@gmail.com" method="POST">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="">
+                    <form id="contactForm">
                         <div class="form-group">
                             <label for="nombre">Nombre y Apellido</label>
                             <input type="text" id="nombre" name="nombre" class="form-control" required>
+                            <span class="error-message" id="error-nombre"></span> <!-- Aquí irá el error -->
                         </div>
                         <div class="form-group">
                             <label for="telefono">Teléfono</label>
                             <input type="tel" id="telefono" name="telefono" class="form-control" required>
+                            <span class="error-message" id="error-telefono"></span>
                         </div>
                         <div class="form-group">
                             <label for="email">Correo Electrónico</label>
                             <input type="email" id="email" name="email" class="form-control" required>
+                            <span class="error-message" id="error-email"></span>
                         </div>
                         <div class="form-group">
                             <label for="mensaje">Mensaje</label>
                             <textarea id="mensaje" name="mensaje" class="form-control" rows="4" required></textarea>
+                            <span class="error-message" id="error-mensaje"></span>
                         </div>
-                        <button type="submit" class="btn-enviar">Enviar</button>
+                        <button class="btn-enviar" type="button" onclick="enviarWhatsApp()">Enviar</button>
                     </form>
+                    
                     <div id="successMessage" style="display: none;">
                         ¡Mensaje enviado con éxito!
                     </div>
@@ -1179,7 +1172,7 @@
                         <p class="redes-subtitle">Ponte en contacto con nosotros mediante nuestras redes sociales</p>
                         <div class="redes-separador"></div>
                         <div class="redes-icons">
-                            <a href="#" class="social-icon facebook" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.facebook.com/profile.php?id=100068796913981" class="social-icon facebook" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                             <a href="https://www.instagram.com/thesis_universall?igsh=MWwwcHlsbjEzdnc0aA=="

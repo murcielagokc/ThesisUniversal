@@ -422,24 +422,70 @@ document.getElementById("buscadorUniversidad").addEventListener("focus", functio
     }
 });
 
-document.getElementById("contactForm").addEventListener("submit", function(event){
-    event.preventDefault(); // Evita que la página se recargue
+function enviarWhatsApp() {
+    // Obtener valores del formulario
+    let nombre = document.getElementById("nombre").value.trim();
+    let telefono = document.getElementById("telefono").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let mensaje = document.getElementById("mensaje").value.trim();
 
-    let form = event.target;
-    let formData = new FormData(form);
+    // Limpiar mensajes de error anteriores
+    document.getElementById("error-nombre").innerText = "";
+    document.getElementById("error-telefono").innerText = "";
+    document.getElementById("error-email").innerText = "";
+    document.getElementById("error-mensaje").innerText = "";
 
-    fetch(form.action, { // Usa la acción del formulario (FormSubmit API)
-        method: "POST",
-        body: formData
-    })
-    .then(response => {
-        if (response.ok) {
-            document.getElementById("successMessage").style.display = "block"; // Muestra el mensaje de éxito
-            form.reset(); // Limpia el formulario después de enviar
-        } else {
-            alert("Hubo un problema al enviar el mensaje.");
-        }
-    })
-    .catch(error => console.error("Error:", error));
-});
+    // Expresiones regulares para validaciones
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let telefonoRegex = /^[0-9]{9,15}$/;
+    let nombreRegex = /^[a-zA-ZÀ-ÿ\s]{3,70}$/;
+
+    let hasError = false; // Variable para saber si hay errores
+
+    // Validar nombre
+    if (!nombreRegex.test(nombre)) {
+        document.getElementById("error-nombre").innerText = "⚠️ Ingresa un nombre válido (solo letras, mínimo 3 caracteres).";
+        hasError = true;
+    }
+
+    // Validar teléfono
+    if (!telefonoRegex.test(telefono)) {
+        document.getElementById("error-telefono").innerText = "⚠️ Ingresa un número válido (solo números, mínimo 9 dígitos).";
+        hasError = true;
+    }
+
+    // Validar correo
+    if (!emailRegex.test(email)) {
+        document.getElementById("error-email").innerText = "⚠️ Ingresa un correo electrónico válido.";
+        hasError = true;
+    }
+
+    // Validar mensaje
+    if (mensaje.length < 5) {
+        document.getElementById("error-mensaje").innerText = "⚠️ El mensaje debe tener al menos 5 caracteres.";
+        hasError = true;
+    }
+
+    // Si hay errores, no enviamos el formulario
+    if (hasError) {
+        return;
+    }
+
+    // Número de WhatsApp al que se enviará (incluye código de país, ej: +51 para Perú)
+    let numeroWhatsApp = "937122927"; // Cambia esto por el número destino
+
+    // Crear el mensaje con formato
+    let textoMensaje = `Hola, me gustaría más información:%0A
+*Nombre:* ${nombre}%0A
+*Teléfono:* ${telefono}%0A
+*Correo:* ${email}%0A
+*Mensaje:* ${mensaje}%0A`;
+
+    // Crear el enlace de WhatsApp
+    let url = `https://wa.me/${numeroWhatsApp}?text=${textoMensaje}`;
+
+    // Abrir WhatsApp Web con el mensaje prellenado
+    window.open(url, "_blank");
+}
+
 
