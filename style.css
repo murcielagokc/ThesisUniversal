@@ -260,6 +260,7 @@ header .navbar {
     gap: 23px;
 }
 
+
 .hero-section .hero-details .button {
     padding: 10px 26px;
     border: 2px solid transparent;
@@ -268,6 +269,29 @@ header .navbar {
     background-color: #f5f9ff;
     color: #000080;
     font-weight: var(--font-weight-medium);
+}
+.hero-section .hero-details .button-wspH {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Espaciado entre ícono y texto */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px; /* Bordes redondeados */
+    background-color: #25D366; /* Color oficial de WhatsApp */
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.hero-section .hero-details .button-wspH:hover {
+    background-color: #15883d; /* Efecto hover */
+
+}
+
+.hero-section .hero-details .button-wspH i {
+    font-size: 20px; /* Tamaño del ícono */
 }
 
 .hero-section .hero-details .button:hover {
@@ -399,7 +423,10 @@ header .navbar {
     font-size: 1rem;
     color: #4B5563;
 }
-
+.stats-item i {
+    color: #FFD700; /* Amarillo dorado para las estrellas */
+    font-size: 22px;
+}
 .about-section .about-details .section-title {
     padding: 0;
 }
@@ -467,6 +494,7 @@ header .navbar {
 .card-list-Servicios {
     display: flex;
     width: 100%;
+    cursor: pointer;
 }
 
 .card-list-Servicios .card-item-Servicios {
@@ -760,6 +788,7 @@ header .navbar {
 .card-list-Universidades {
     display: flex;
     width: 100%;
+    cursor: pointer;
 }
 
 .card-list-Universidades .card-item-Universidades {
@@ -914,6 +943,7 @@ header .navbar {
 .card-list-Referencias {
     display: flex;
     width: 100%;
+    cursor: pointer;
 }
 
 .card-list-Referencias .card-item-Referencias {
@@ -1085,6 +1115,7 @@ textarea.form-control {
 
 .redes-icons {
     display: flex;
+    justify-content:space-evenly;
     gap: 20px;
 }
 
@@ -1092,8 +1123,8 @@ textarea.form-control {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     color: white;
     transition: transform 0.3s;
@@ -1248,10 +1279,14 @@ textarea.form-control {
     text-decoration: none;
     font-size: 14px;
     transition: color 0.3s ease;
+    
 }
-
+.fut-nav{
+    cursor: pointer;
+}
 .footer-bottom-links a:hover {
     color: #ffffff;
+
 }
 
 /* Media query para tablets */

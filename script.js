@@ -472,7 +472,7 @@ function enviarWhatsApp() {
     }
 
     // Número de WhatsApp al que se enviará (incluye código de país, ej: +51 para Perú)
-    let numeroWhatsApp = "902421502"; // Cambia esto por el número destino
+    let numeroWhatsApp = "937122927"; // Cambia esto por el número destino
 
     // Crear el mensaje con formato
     let textoMensaje = `Hola, me gustaría más información:%0A
