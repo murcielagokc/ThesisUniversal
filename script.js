@@ -314,19 +314,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 const universidades = {
-    "pontificia universidad católica del perú": "Cato",
-    "universidad científica del sur": "Ucsur",
-    "universidad esan": "Esan",
-    "universidad señor de sipán": "Uss",
-    "universidad de lima": "Ulima",
-    "universidad peruana de ciencias aplicadas": "UPC",
-    "universidad privada del norte": "Upn",
-    "universidad césar vallejo": "Ucv",
-    "universidad de ingeniería y tecnología": "Utec",
-    "universidad tecnológica del perú": "Utp",
-    "universidad de piura": "Upiura",
-    "universidad de san martín de porres": "Usmp",
-    "universidad nacional tecnológica de lima sur": "Untels"
+    "Pontificia Universidad Católica del Perú": "Cato",
+    "Universidad Científica del Sur": "Ucsur",
+    "Universidad Esan": "Esan",
+    "Universidad Señor de Sipán": "Uss",
+    "Universidad de Lima": "Ulima",
+    "Universidad Peruana de Ciencias Aplicadas": "UPC",
+    "Universidad Privada del Norte": "Upn",
+    "Universidad César Vallejo": "Ucv",
+    "Universidad de Ingeniería y Tecnología": "Utec",
+    "Universidad Tecnológica del Perú": "Utp",
+    "Universidad de Piura": "Upiura",
+    "Universidad de San Martín de Porres": "Usmp",
+    "Universidad Nacional Tecnológica de Lima Sur": "Untels",
+    "Universidad Nacional Mayor de San Marcos": "UNMSM",
+    "Universidad Nacional de Ingeniería": "UNI",
+    "Universidad Nacional Agraria la Molina": "UNALM",
+    "Universidad Nacional del Callao": "UNAC",
+    "Universidad Nacional de Cajamarca": "UNC",
+    "Universidad Nacional del Centro del Perú": "UNCP",
+    "Universidad Nacional San Agustín de Arequipa": "UNSA",
+    "Universidad Nacional de San Cristóbal de Huamanga": "UNSCH",
+    "Universidad Nacional San Antonio Abad del Cusco": "UNSAAC",
+    "Universidad Nacional Federico Villarreal": "UNFV",
+    "Universidad Católica San Pablo": "UCSP"
 };
 
 function normalizarTexto(texto) {
@@ -336,52 +347,72 @@ function normalizarTexto(texto) {
         
         .trim();
 }
+const universidadesArray = Object.entries(universidades).flatMap(([nombre, abreviatura]) => [
+    { nombre: normalizarTexto(nombre), abreviatura, tipo: "nombre" },
+    { nombre: normalizarTexto(abreviatura), abreviatura, tipo: "abreviatura" }
+]);
 
+// Función para buscar universidades por nombre completo o abreviatura
+function buscarUniversidad(input) {
+    const terminoBusqueda = input.toLowerCase().trim();
+    const resultado = universidadesArray.find(uni => uni.nombre.includes(terminoBusqueda));
+
+    return resultado ? resultado.abreviatura : "No se encontró la universidad";
+}
 // Función para mostrar sugerencias mientras el usuario escribe
 function mostrarSugerencias() {
-    let input = document.getElementById("buscadorUniversidad").value.toLowerCase();
+    let input = document.getElementById("buscadorUniversidad").value;
     let sugerenciasDiv = document.getElementById("sugerencias");
 
     // Limpiar sugerencias anteriores
     sugerenciasDiv.innerHTML = "";
-    
+
     // Si el input está vacío, ocultar sugerencias
     if (input.length < 2) {
         sugerenciasDiv.style.display = "none";
         return;
     }
-    
-    // Normalizar input para búsqueda
+
     let inputNormalizado = normalizarTexto(input);
-    
-    // Buscar coincidencias
     let coincidencias = [];
-    
-    for (let uni in universidades) {
-        let uniNormalizada = normalizarTexto(uni);
-        
-        if (uniNormalizada.includes(inputNormalizado)) {
+
+    for (let nombre in universidades) {
+        let nombreNormalizado = normalizarTexto(nombre);
+        let abreviatura = universidades[nombre].toUpperCase();
+        let abreviaturaNormalizada = normalizarTexto(abreviatura);
+
+        // Si el input coincide con el nombre completo, mostrar solo el nombre completo
+        if (nombreNormalizado.includes(inputNormalizado)) {
             coincidencias.push({
-                nombre: uni,
-                codigo: universidades[uni]
+                nombre: nombre,
+                codigo: abreviatura,
+                mostrar: nombre
+            });
+        }
+        
+        // Si el input coincide con la abreviatura, mostrar solo el nombre completo
+        if (abreviaturaNormalizada.includes(inputNormalizado)) {
+            coincidencias.push({
+                nombre: nombre,
+                codigo: abreviatura,
+                mostrar: nombre
             });
         }
     }
-    
-    // Mostrar coincidencias o mensaje si no hay resultados
+
     if (coincidencias.length > 0) {
         coincidencias.forEach(uni => {
             let item = document.createElement("div");
             item.className = "list-group-item";
-            item.textContent = uni.nombre.charAt(0).toUpperCase() + uni.nombre.slice(1);
+            item.innerHTML = `${uni.mostrar}`;
             item.setAttribute("data-toggle", "modal");
             item.setAttribute("data-target", `#${uni.codigo}`);
-            
+
             // Al hacer clic en una sugerencia
-            item.addEventListener("click", function() {
+            item.addEventListener("click", function () {
                 document.getElementById("buscadorUniversidad").value = uni.nombre;
                 sugerenciasDiv.style.display = "none";
-                
+
                 // Abrir el modal correspondiente
                 const modal = document.getElementById(uni.codigo);
                 if (modal) {
@@ -389,7 +420,7 @@ function mostrarSugerencias() {
                     document.body.style.overflow = "hidden"; // Evitar scroll
                 }
             });
-            
+
             sugerenciasDiv.appendChild(item);
         });
     } else {
@@ -398,7 +429,7 @@ function mostrarSugerencias() {
         noResultados.textContent = "No se encontraron resultados";
         sugerenciasDiv.appendChild(noResultados);
     }
-    
+
     // Mostrar el div de sugerencias
     sugerenciasDiv.style.display = "block";
 }

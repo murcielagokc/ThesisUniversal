@@ -919,6 +919,55 @@ header .navbar {
     color: #ffffff;
 }
 
+.hover-UNMSM:hover {
+    background: linear-gradient(to top, #C9A341, #452416);
+    color: #ffffff;
+}
+.hover-UNI:hover {
+    background: linear-gradient(to top, #800000, #D3D3D3);
+    color: #ffffff;
+}
+.hover-UNAM:hover {
+    background: linear-gradient(to top, #228B22, #FFD700);
+    color: #ffffff;
+}
+.hover-UNFV:hover {
+    background: linear-gradient(to bottom, #000000, #FFA500);
+    color: #ffffff;
+}
+.hover-UNAC:hover {
+    background: linear-gradient(to bottom, #0033A0, #FFD700);
+    color: #ffffff;
+}
+.hover-UNSA:hover {
+    background: linear-gradient(to top, #800000, #FFD700);
+    color: #ffffff;
+}
+.hover-UNCP:hover {
+    background: linear-gradient(to bottom, #006400, #FFD700);
+    color: #ffffff;
+}
+.hover-UNCA:hover {
+    background: linear-gradient(to bottom, #0033A0, #FFD700);
+    color: #ffffff;
+}
+.hover-UNSCH:hover {
+    background: linear-gradient(to bottom, #FFD700, #8B0000);
+    color: #ffffff;
+}
+.hover-UNSAAC:hover {
+    background: linear-gradient(to top, #8B0000, #FFD700);
+    color: #ffffff;
+}
+.hover-UCSP:hover {
+    background: linear-gradient(to bottom, #1C1C1C, #E0E0E0);
+    color: #ffffff;
+}
+
+
+
+
+
 .Referencias-section {
     min-height: 100vh;
 }
