@@ -237,9 +237,15 @@ header .navbar {
     justify-content: space-between;
 }
 
+.hero-section .hero-details {
+    max-width: 60%;
+    
+    
+}
 .hero-section .hero-details .title {
     font-size: var(--font-size-xxl);
     color: #000080;
+    max-width: 80%;
 }
 
 .hero-section .hero-details .subtitle {
@@ -250,9 +256,10 @@ header .navbar {
 }
 
 .hero-section .hero-details .description {
-    max-width: 70%;
-    margin: 24px 0 40px;
+    max-width: 85%;
+    margin: 24px 0 20px;
     font-size: var(--font-size-m);
+    text-align: justify;
 }
 
 .hero-section .hero-details .buttons {
