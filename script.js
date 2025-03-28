@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 const universidades = {
-    "Pontificia Universidad Católica del Perú": "Cato",
+    "Pontificia Universidad Católica del Perú": "PUCP",
     "Universidad Científica del Sur": "Ucsur",
     "Universidad Esan": "Esan",
     "Universidad Señor de Sipán": "Uss",
@@ -361,76 +361,67 @@ function buscarUniversidad(input) {
 }
 // Función para mostrar sugerencias mientras el usuario escribe
 function mostrarSugerencias() {
-    let input = document.getElementById("buscadorUniversidad").value;
-    let sugerenciasDiv = document.getElementById("sugerencias");
+    const input = document.getElementById("buscadorUniversidad").value;
+    const sugerenciasDiv = document.getElementById("sugerencias");
 
-    // Limpiar sugerencias anteriores
-    sugerenciasDiv.innerHTML = "";
+    sugerenciasDiv.innerHTML = ""; // Limpiar
+    const inputNormalizado = normalizarTexto(input);
 
-    // Si el input está vacío, ocultar sugerencias
-    if (input.length < 2) {
+    if (inputNormalizado === "") {
         sugerenciasDiv.style.display = "none";
         return;
     }
 
-    let inputNormalizado = normalizarTexto(input);
-    let coincidencias = [];
+    // Buscar coincidencias en nombre o abreviatura
+    let coincidencias = Object.entries(universidades).map(([nombre, codigo]) => {
+        const nombreNorm = normalizarTexto(nombre);
+        const codigoNorm = normalizarTexto(codigo);
 
-    for (let nombre in universidades) {
-        let nombreNormalizado = normalizarTexto(nombre);
-        let abreviatura = universidades[nombre].toUpperCase();
-        let abreviaturaNormalizada = normalizarTexto(abreviatura);
+        let prioridad = 3;
 
-        // Si el input coincide con el nombre completo, mostrar solo el nombre completo
-        if (nombreNormalizado.includes(inputNormalizado)) {
-            coincidencias.push({
-                nombre: nombre,
-                codigo: abreviatura,
-                mostrar: nombre
-            });
+        if (nombreNorm.startsWith(inputNormalizado) || codigoNorm.startsWith(inputNormalizado)) {
+            prioridad = 1; // Alta prioridad si comienza con el término
+        } else if (nombreNorm.includes(inputNormalizado) || codigoNorm.includes(inputNormalizado)) {
+            prioridad = 2; // Prioridad media si lo contiene
+        } else {
+            return null; // Sin coincidencia
         }
-        
-        // Si el input coincide con la abreviatura, mostrar solo el nombre completo
-        if (abreviaturaNormalizada.includes(inputNormalizado)) {
-            coincidencias.push({
-                nombre: nombre,
-                codigo: abreviatura,
-                mostrar: nombre
-            });
-        }
-    }
 
+        return { nombre, codigo, prioridad };
+    }).filter(Boolean); // Quitar nulos
+
+    // Ordenar por prioridad
+    coincidencias.sort((a, b) => a.prioridad - b.prioridad);
+
+    // Mostrar resultados
     if (coincidencias.length > 0) {
         coincidencias.forEach(uni => {
-            let item = document.createElement("div");
+            const item = document.createElement("div");
             item.className = "list-group-item";
-            item.innerHTML = `${uni.mostrar}`;
+            item.textContent = uni.nombre;
             item.setAttribute("data-toggle", "modal");
             item.setAttribute("data-target", `#${uni.codigo}`);
 
-            // Al hacer clic en una sugerencia
-            item.addEventListener("click", function () {
+            item.addEventListener("click", () => {
                 document.getElementById("buscadorUniversidad").value = uni.nombre;
                 sugerenciasDiv.style.display = "none";
 
-                // Abrir el modal correspondiente
                 const modal = document.getElementById(uni.codigo);
                 if (modal) {
                     modal.style.display = "flex";
-                    document.body.style.overflow = "hidden"; // Evitar scroll
+                    document.body.style.overflow = "hidden";
                 }
             });
 
             sugerenciasDiv.appendChild(item);
         });
     } else {
-        let noResultados = document.createElement("div");
+        const noResultados = document.createElement("div");
         noResultados.className = "list-group-item text-muted";
         noResultados.textContent = "No se encontraron resultados";
         sugerenciasDiv.appendChild(noResultados);
     }
 
-    // Mostrar el div de sugerencias
     sugerenciasDiv.style.display = "block";
 }
 
@@ -517,6 +508,26 @@ Mensaje: ${mensaje}%0A`;
 
     // Abrir WhatsApp Web con el mensaje prellenado
     window.open(url, "_blank");
+     // 2. Enviar a FormSubmit con JS (sin recargar)
+     const form = document.getElementById("contactForm");
+     const formData = new FormData(form);
+ 
+     fetch(form.action, {
+         method: "POST",
+         body: formData,
+         headers: {
+             'Accept': 'application/json'
+         }
+     })
+     .then(response => {
+         if (response.ok) {
+             document.getElementById("successMessage").style.display = "block";
+             form.reset();
+         } else {
+             alert("Error al enviar el formulario. Intente nuevamente.");
+         }
+     })
+     .catch(() => alert("No se pudo enviar el formulario."));
 }
 
 

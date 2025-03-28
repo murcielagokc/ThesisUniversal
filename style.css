@@ -239,9 +239,8 @@ header .navbar {
 
 .hero-section .hero-details {
     max-width: 60%;
-    
-    
 }
+
 .hero-section .hero-details .title {
     font-size: var(--font-size-xxl);
     color: #000080;
@@ -277,14 +276,18 @@ header .navbar {
     color: #000080;
     font-weight: var(--font-weight-medium);
 }
+
 .hero-section .hero-details .button-wspH {
     display: inline-flex;
     align-items: center;
-    gap: 8px; /* Espaciado entre ícono y texto */
+    gap: 8px;
+    /* Espaciado entre ícono y texto */
     padding: 12px 20px;
     border: none;
-    border-radius: 30px; /* Bordes redondeados */
-    background-color: #25D366; /* Color oficial de WhatsApp */
+    border-radius: 30px;
+    /* Bordes redondeados */
+    background-color: #25D366;
+    /* Color oficial de WhatsApp */
     color: white;
     font-weight: bold;
     font-size: 16px;
@@ -293,12 +296,14 @@ header .navbar {
 }
 
 .hero-section .hero-details .button-wspH:hover {
-    background-color: #15883d; /* Efecto hover */
+    background-color: #15883d;
+    /* Efecto hover */
 
 }
 
 .hero-section .hero-details .button-wspH i {
-    font-size: 20px; /* Tamaño del ícono */
+    font-size: 20px;
+    /* Tamaño del ícono */
 }
 
 .hero-section .hero-details .button:hover {
@@ -430,10 +435,13 @@ header .navbar {
     font-size: 1rem;
     color: #4B5563;
 }
+
 .stats-item i {
-    color: #FFD700; /* Amarillo dorado para las estrellas */
+    color: #FFD700;
+    /* Amarillo dorado para las estrellas */
     font-size: 22px;
 }
+
 .about-section .about-details .section-title {
     padding: 0;
 }
@@ -573,7 +581,7 @@ header .navbar {
     height: 35px;
     width: 35px;
     color: #000080;
-    border-radius: 50%;  
+    border-radius: 50%;
     background: none;
     cursor: pointer;
     border: 2px solid #000080;
@@ -930,42 +938,52 @@ header .navbar {
     background: linear-gradient(to top, #C9A341, #452416);
     color: #ffffff;
 }
+
 .hover-UNI:hover {
     background: linear-gradient(to top, #800000, #D3D3D3);
     color: #ffffff;
 }
+
 .hover-UNAM:hover {
     background: linear-gradient(to top, #228B22, #FFD700);
     color: #ffffff;
 }
+
 .hover-UNFV:hover {
     background: linear-gradient(to bottom, #000000, #FFA500);
     color: #ffffff;
 }
+
 .hover-UNAC:hover {
     background: linear-gradient(to bottom, #0033A0, #FFD700);
     color: #ffffff;
 }
+
 .hover-UNSA:hover {
     background: linear-gradient(to top, #800000, #FFD700);
     color: #ffffff;
 }
+
 .hover-UNCP:hover {
     background: linear-gradient(to bottom, #006400, #FFD700);
     color: #ffffff;
 }
+
 .hover-UNCA:hover {
     background: linear-gradient(to bottom, #0033A0, #FFD700);
     color: #ffffff;
 }
+
 .hover-UNSCH:hover {
     background: linear-gradient(to bottom, #FFD700, #8B0000);
     color: #ffffff;
 }
+
 .hover-UNSAAC:hover {
     background: linear-gradient(to top, #8B0000, #FFD700);
     color: #ffffff;
 }
+
 .hover-UCSP:hover {
     background: linear-gradient(to bottom, #1C1C1C, #E0E0E0);
     color: #ffffff;
@@ -1171,7 +1189,7 @@ textarea.form-control {
 
 .redes-icons {
     display: flex;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     gap: 20px;
 }
 
@@ -1296,12 +1314,14 @@ textarea.form-control {
     margin-right: 10px;
     color: #ff0000;
 }
+
 .error-message {
     color: red;
     font-size: 14px;
     margin-top: 5px;
     display: block;
 }
+
 /* Botón de WhatsApp */
 
 
@@ -1335,11 +1355,13 @@ textarea.form-control {
     text-decoration: none;
     font-size: 14px;
     transition: color 0.3s ease;
-    
+
 }
-.fut-nav{
+
+.fut-nav {
     cursor: pointer;
 }
+
 .footer-bottom-links a:hover {
     color: #ffffff;
 
@@ -1606,6 +1628,37 @@ textarea.form-control {
         padding: 50px 20px;
     }
 
+    .hero-section .hero-details .title {
+        font-size: 1.7rem;
+        /* Reduce el tamaño */
+        line-height: 1.3;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .hero-section .hero-details .subtitle {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    .hero-section .hero-details .description {
+        font-size: 0.95rem;
+        text-align: justify;
+        max-width: 100%;
+    }
+
+    .hero-section .hero-details {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        max-width: 80%;
+    }
+
+    .hero-section .hero-details .buttons {
+        justify-content: center;
+    }
+
     .contacto-form-container,
     .contacto-info-container {
         padding: 30px 20px;
@@ -1615,6 +1668,9 @@ textarea.form-control {
         flex-wrap: wrap;
         justify-content: center;
     }
+    .stats-section {
+        margin-bottom: 30px;
+      }
 }
 
 @media (hover: none) {
